@@ -1,0 +1,73 @@
+version: '3.4'
+
+networks:
+  deathstar-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+    driver: local
+
+services:
+  api:    
+    build:
+      context: 'api'
+      target: 'dev'
+    container_name: deathstar-api
+    stdin_open: true
+    tty: true
+    command: /bin/sh init.sh
+    stop_signal: SIGKILL
+    ports:
+      - 8000:8000
+    volumes:
+      - ./api:/var/www/html
+    networks:
+      - deathstar-network
+    depends_on: 
+      - redis
+      - mysql
+
+  dashboard:
+    build:
+      context: 'dashboard'
+      target: 'dev'
+    container_name: deathstar-dashboard
+    ports:
+      - 3000:3000
+    command: /bin/sh -c "yarn && yarn dev --host 0.0.0.0"
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./dashboard:/usr/src/app
+    networks:
+      - deathstar-network   
+
+  redis:
+    image: redis:6.2-alpine
+    container_name: deathstar-redis
+    networks: 
+      - deathstar-network
+
+  mysql:
+    image: mysql:8.0
+    container_name: deathstar-mysql
+    environment: 
+      MYSQL_DATABASE: "default"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - mysql-data:/var/lib/mysql/  
+    networks:
+      - deathstar-network
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: deathstar-phpmyadmin
+    ports:
+      - 8081:80
+    environment:
+      - PMA_HOST=mysql
+      - PMA_ARBITRARY=1
+    networks:
+      - deathstar-network
+
