@@ -1,27 +1,49 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <header>
+    TODO header
+    <router-link :to="{ name: 'login'}">
+      Login
+    </router-link>
+    <router-link :to="{ name: 'dashboard'}">
+      Dashboard
+    </router-link>
+    <router-link :to="{ name: 'demo'}">
+      Demo
+    </router-link>
+    <a
+      href="javascript:"
+      @click="onLogoutClick"
+    >Logout</a>
+  </header>
+  <router-view />
+  <footer>
+    TODO footer {{ auth.getters.isLogged }} {{ auth.state.user }}
+  </footer>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+<script setup lang="ts">
+import { useAuthStore } from '@/stores/auth'
+import { useRouter } from 'vue-router'
 
-export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-})
+const auth = useAuthStore()
+const router = useRouter()
+
+const onLogoutClick = () => {
+  auth.logout()
+  router.push({ name: 'login' })
+}
+
+auth.refreshCsrf()
+if (auth.getters.isLogged) {
+  auth.refreshUserData()
+    .catch((error) => {
+      if (error.response?.status === 401) {
+        router.push({ name: 'login' })
+      }
+    })
+}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import "nprogress/nprogress";
 </style>
