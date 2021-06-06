@@ -1,0 +1,16 @@
+.form-input {
+  @apply bg-transparent border-white border-opacity-60 rounded-full;
+
+  &:focus {
+    @apply border-red glow;
+  }
+}
+
+.form-checkbox, .form-radio {
+  @apply text-red bg-transparent border-white border-opacity-60;
+  box-shadow: none !important;
+
+  &:checked {
+    @apply shadow-sm;
+  }
+}

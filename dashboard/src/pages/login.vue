@@ -1,43 +1,51 @@
 <template>
-  <div>
-    <form @submit.prevent="onSubmit">
-      <input
-        v-model="form.email"
-        type="email"
-        placeholder="Email"
-        required
-      >
-      <input
-        v-model="form.password"
-        type="password"
-        placeholder="Password"
-        required
-      >
+  <form
+    class="flex flex-col p-8"
+    @submit.prevent="onSubmit"
+  >
+    <input
+      v-model="form.email"
+      class="form-input my-2"
+      type="email"
+      placeholder="Email"
+      required
+    >
+    <input
+      v-model="form.password"
+      class="form-input my-2"
+      type="password"
+      placeholder="Password"
+      required
+    >
 
-      <label>
-        <span>Zapamiętaj</span>
-        <input
-          v-model="form.remember"
-          type="checkbox"
-        ></label>
-      <button
-        type="submit"
+    <label class="my-2 flex items-center">
+      <input
+        v-model="form.remember"
+        type="checkbox"
+        class="form-checkbox"
       >
-        Zaloguj
-      </button>
-    </form>
-  </div>
+      <span class="ml-2">Zapamiętaj</span>
+    </label>
+    <button
+      type="submit"
+      class="btn btn-outline my-2"
+    >
+      Zaloguj
+    </button>
+  </form>
 </template>
 
 <script setup lang="ts">
-import { defineProps, reactive } from 'vue'
+import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import { useLoading } from '@/loading'
+import { useToast } from 'vue-toastification'
 
 const auth = useAuthStore()
 const router = useRouter()
 const loading = useLoading()
+const toast = useToast()
 
 const form = reactive({
   email: 'demo@example.com',
@@ -50,16 +58,13 @@ const onSubmit = () => {
   auth.login(form)
     .then(() => {
       router.push({ name: 'dashboard' })
+      toast(`Welcome back in the command center, ${auth.state.user.name}!`)
     })
     .catch((err) => {
-      alert(err.response.data.message)
+      toast.error(err.response.data.message)
     })
     .finally(() => {
       loading.end()
     })
 }
 </script>
-
-<style>
-/* css */
-</style>

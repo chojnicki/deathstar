@@ -1,0 +1,6 @@
+/* TODO purge unused animations from build */
+@import "animate.css";
+
+:root {
+  --animate-duration: 300ms; /* animate.css */
+}

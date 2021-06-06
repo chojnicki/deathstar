@@ -1,0 +1,46 @@
+/* Self hosted instead google fonts for better performance */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Open Sans'),
+       url('/src/assets/fonts/open-sans-v20-latin-ext_latin-300.woff2') format('woff2'),
+       url('/src/assets/fonts/open-sans-v20-latin-ext_latin-300.woff') format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Open Sans'),
+       url('/src/assets/fonts/open-sans-v20-latin-ext_latin-regular.woff2') format('woff2'),
+       url('/src/assets/fonts/open-sans-v20-latin-ext_latin-regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Open Sans'),
+       url('/src/assets/fonts/open-sans-v20-latin-ext_latin-600.woff2') format('woff2'),
+       url('/src/assets/fonts/open-sans-v20-latin-ext_latin-600.woff') format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Open Sans'),
+       url('/src/assets/fonts/open-sans-v20-latin-ext_latin-700.woff2') format('woff2'),
+       url('/src/assets/fonts/open-sans-v20-latin-ext_latin-700.woff') format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: local('Open Sans'),
+       url('/src/assets/fonts/open-sans-v20-latin-ext_latin-800.woff2') format('woff2'),
+       url('/src/assets/fonts/open-sans-v20-latin-ext_latin-800.woff') format('woff');
+}

@@ -4,7 +4,7 @@ import { guestMiddleware } from '@/middleware/guest'
 
 type MiddlewareReturn = RouteLocationRaw | void | boolean
 interface MiddlewareRouteMeta extends RouteMeta {
-  middleware?: string[]
+  middleware?: string[],
 }
 interface MiddlewareRoute extends RouteLocationNormalized {
   meta: MiddlewareRouteMeta

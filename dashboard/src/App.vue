@@ -1,49 +1,55 @@
 <template>
-  <header>
-    TODO header
-    <router-link :to="{ name: 'login'}">
-      Login
-    </router-link>
-    <router-link :to="{ name: 'dashboard'}">
-      Dashboard
-    </router-link>
-    <router-link :to="{ name: 'demo'}">
-      Demo
-    </router-link>
-    <a
-      href="javascript:"
-      @click="onLogoutClick"
-    >Logout</a>
-  </header>
-  <router-view />
-  <footer>
-    TODO footer {{ auth.getters.isLogged }} {{ auth.state.user }}
-  </footer>
+  <template v-if="route.matched.length">
+    <transition
+      enter-active-class="animate__animated animate__fadeIn"
+      leave-active-class="animate__animated animate__fadeOut"
+    >
+      <component :is="layouts[currentLayout]">
+        <router-view v-slot="{ Component }">
+          <transition
+            enter-active-class="animate__animated animate__fadeInLeft"
+            leave-active-class="hidden"
+          >
+            <suspense timeout="0">
+              <component
+                :is="Component"
+                v-if="Component"
+              />
+              <template #fallback>
+                <span>Loading... TODO</span>
+              </template>
+            </suspense>
+          </transition>
+        </router-view>
+      </component>
+    </transition>
+  </template>
 </template>
 
 <script setup lang="ts">
-import { useAuthStore } from '@/stores/auth'
-import { useRouter } from 'vue-router'
+import { computed } from 'vue'
+import type { Component } from 'vue'
+import { useRoute } from 'vue-router'
+import LayoutDefault from '@/layouts/Default.vue'
+import LayoutAuth from '@/layouts/Auth.vue'
 
-const auth = useAuthStore()
-const router = useRouter()
+const route = useRoute()
 
-const onLogoutClick = () => {
-  auth.logout()
-  router.push({ name: 'login' })
+const layouts: Record<string, Component> = {
+  default: LayoutDefault,
+  auth: LayoutAuth,
 }
 
-auth.refreshCsrf()
-if (auth.getters.isLogged) {
-  auth.refreshUserData()
-    .catch((error) => {
-      if (error.response?.status === 401) {
-        router.push({ name: 'login' })
-      }
-    })
-}
+const currentLayout = computed(() => route.meta.layout as string || 'default')
+
 </script>
 
-<style>
-@import "nprogress/nprogress";
+<style lang="postcss">
+@import "@/styles/index.css";
+
+#app {
+  @apply text-white min-h-screen font-sans bg-blue-dark bg-repeat-x bg-fixed;
+  /* fix gradient banding by dither - I know it sucks that it's png, but small one ;) */
+  background-image: url('@/assets/images/bg.png'); /* inline after build */
+}
 </style>

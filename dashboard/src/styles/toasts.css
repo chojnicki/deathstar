@@ -1,0 +1,36 @@
+/**
+ * TODO
+ * CSS is just overwritten instead installing SCSS postprocessor just for that.
+ * Instead consider writing own toastr or find alternative with css variables
+ */
+
+@import "vue-toastification/dist/index.css";
+
+
+.Vue-Toastification__toast {
+  @apply shadow-xl font-sans;
+}
+
+.Vue-Toastification__toast--default {
+  @apply bg-blue-dark bg-opacity-90;
+}
+
+.Vue-Toastification__toast--info {
+  @apply bg-blue-dark bg-opacity-90;
+}
+
+.Vue-Toastification__toast--success {
+  @apply bg-blue-dark bg-opacity-90;
+}
+
+.Vue-Toastification__toast--error {
+  @apply bg-red bg-opacity-90;
+}
+
+.Vue-Toastification__toast--warning {
+  @apply bg-yellow bg-opacity-90;
+}
+
+.Vue-Toastification__close-button {
+  line-height: 0;
+}

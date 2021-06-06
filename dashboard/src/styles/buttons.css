@@ -1,0 +1,25 @@
+.btn {
+  @apply relative text-center py-2 px-8 bg-red rounded-full border-2 border-red glow;
+
+  &:after { /* increase glow - optimized for fps (repaint) */
+    content: "";
+    @apply glow absolute left-0 top-0 w-full h-full rounded-full opacity-0 transition-opacity;
+  }
+
+  &:hover,
+  &:focus {
+    &:after {
+      @apply opacity-100;
+    }
+  }
+  
+  &.btn-outline {
+    @apply bg-transparent;
+  }
+}
+
+button {
+  &:focus {
+      @apply outline-none;
+  }
+}
