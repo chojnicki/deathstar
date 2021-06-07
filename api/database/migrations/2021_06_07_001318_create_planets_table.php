@@ -19,8 +19,8 @@ class CreatePlanetsTable extends Migration
             $table->integer('rotation_period')->nullable();
             $table->integer('orbital_period')->nullable();
             $table->integer('diameter')->nullable()->index();
-            $table->string('climate', 16)->nullable();
-            $table->string('gravity', 16)->nullable();
+            $table->json('climate')->nullable();
+            $table->string('gravity', 64)->nullable();
             $table->json('terrains')->nullable();
             $table->integer('surface_water')->nullable();
             $table->bigInteger('population')->nullable()->index();

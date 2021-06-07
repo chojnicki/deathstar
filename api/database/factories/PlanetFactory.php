@@ -27,7 +27,7 @@ class PlanetFactory extends Factory
             'rotation_period' => mt_rand(0, 2) ? mt_rand(1, 9999) : null,
             'orbital_period' => mt_rand(0, 2) ? mt_rand(1, 9999) : null,
             'diameter' => mt_rand(0, 2) ? mt_rand(1, 999999) : null,
-            'climate' => mt_rand(0, 2) ? Arr::random(['temperature', 'arid', 'frozen']) : null,
+            'climate' => array_slice(Arr::shuffle(['temperature', 'arid', 'frozen']), 0, mt_rand(1, 3)),
             'gravity' => null,
             'terrains' => array_slice(Arr::shuffle(['forest', 'desert', 'swamp', 'jungle']), 0, mt_rand(1, 3)),
             'diameter' => mt_rand(0, 2) ? mt_rand(0, 9999) : null,

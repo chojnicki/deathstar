@@ -12,7 +12,10 @@ class Planet extends Model
 
     protected $casts = [
         'terrains' => 'array',
+        'climate' => 'array',
     ];
+
+    protected $guarded = ['id'];
 
     public function people(): HasMany
     {
