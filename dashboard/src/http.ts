@@ -2,7 +2,7 @@ import axios from 'axios'
 import type { AxiosError } from 'axios'
 
 export const http = axios.create({
-  baseURL: 'http://localhost:8000/',
+  baseURL: import.meta.env.VITE_API_URL as string || 'http://localhost:8000/',
   withCredentials: true,
 })
 
