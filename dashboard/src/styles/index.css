@@ -1,6 +1,6 @@
 @import "@/styles/animations.css";
 @import "@/styles/fonts.css";
-@import "nprogress/nprogress";
+@import "@/styles/loadings.css";
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";

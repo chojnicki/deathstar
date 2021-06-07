@@ -1,5 +1,5 @@
 .btn {
-  @apply relative text-center py-2 px-8 bg-red rounded-full border-2 border-red glow;
+  @apply relative text-center py-2 px-8 bg-red rounded-full border-2 border-red glow transition-opacity;
 
   &:after { /* increase glow - optimized for fps (repaint) */
     content: "";
@@ -15,6 +15,11 @@
   
   &.btn-outline {
     @apply bg-transparent;
+  }
+
+  &:disabled {
+    @apply opacity-70 pointer-events-none;
+
   }
 }
 

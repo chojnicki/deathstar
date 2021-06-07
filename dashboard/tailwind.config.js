@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const pluginForms = require('@tailwindcss/forms')
 const plugin = require('tailwindcss/plugin')
+const _ = require('lodash')
 
 module.exports = {
   mode: 'jit',
@@ -46,6 +47,20 @@ module.exports = {
           boxShadow: `0 0 10px ${theme('colors.red')},  0 0 10px ${theme('colors.red')} inset`,
         },
       })
+    }),
+    /* Table border spacing */
+    plugin(({ addUtilities, theme, e }) => {
+      addUtilities(_.map(theme('spacing'), (value, key) => ({
+        [`.${e(`border-spacing-${key}`)}`]: {
+          borderSpacing: value,
+        },
+        [`.${e(`border-spacing-x-${key}`)}`]: {
+          borderSpacing: `${value} 0`,
+        },
+        [`.${e(`border-spacing-y-${key}`)}`]: {
+          borderSpacing: `0 ${value}`,
+        },
+      })))
     }),
   ],
 }

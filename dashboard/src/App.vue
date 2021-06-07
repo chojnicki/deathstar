@@ -1,13 +1,13 @@
 <template>
   <template v-if="route.matched.length">
     <transition
-      enter-active-class="animate__animated animate__fadeIn"
-      leave-active-class="animate__animated animate__fadeOut"
+      enter-active-class="animated fadeIn"
+      leave-active-class="animated fadeOut"
     >
       <component :is="layouts[currentLayout]">
         <router-view v-slot="{ Component }">
           <transition
-            enter-active-class="animate__animated animate__fadeInLeft"
+            enter-active-class="animated fadeInLeft"
             leave-active-class="hidden"
           >
             <suspense timeout="0">

@@ -41,6 +41,7 @@ import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import { useLoading } from '@/loading'
 import { useToast } from 'vue-toastification'
+import { getErrorMessage } from '@/http'
 
 const auth = useAuthStore()
 const router = useRouter()
@@ -61,7 +62,7 @@ const onSubmit = () => {
       toast(`Welcome back in the command center, ${auth.state.user.name}!`)
     })
     .catch((err) => {
-      toast.error(err.response.data.message)
+      toast.error(getErrorMessage(err, 'Unknown login error. Refresh and try again.'))
     })
     .finally(() => {
       loading.end()

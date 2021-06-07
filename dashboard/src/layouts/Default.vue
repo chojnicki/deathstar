@@ -1,9 +1,9 @@
 <template>
-  <div class="w-full min-h-screen p-6 md:pl-28 pt-28">
+  <div class="w-full min-h-screen p-6 md:pl-28 pt-28 text-sm">
     <Header />
     <transition
-      enter-active-class="animate__animated animate__slideInLeft"
-      leave-active-class="animate__animated animate__slideOutLeft"
+      enter-active-class="animated slideInLeft"
+      leave-active-class="animated slideOutLeft"
     >
       <Menu v-if="layout.state.menuExpanded" />
     </transition>

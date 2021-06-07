@@ -1,6 +1,12 @@
-/* TODO purge unused animations from build */
-@import "animate.css";
+@import "animate.css/source/_base.css";
+@import "animate.css/source/fading_entrances/fadeIn.css";
+@import "animate.css/source/fading_entrances/fadeInLeft.css";
+@import "animate.css/source/fading_exits/fadeOut.css";
+@import "animate.css/source/sliding_entrances/slideInLeft.css";
+@import "animate.css/source/sliding_exits/slideOutLeft.css";
 
 :root {
-  --animate-duration: 300ms; /* animate.css */
+  --animate-duration: 300ms;
+  --animate-delay: 1s;
+  --animate-repeat: 1;
 }

@@ -1,0 +1,11 @@
+@import "nprogress/nprogress";
+
+#nprogress {
+  .bar {
+    @apply bg-red h-1 glow;
+  }
+
+  .peg {
+    @apply hidden;
+  }
+}

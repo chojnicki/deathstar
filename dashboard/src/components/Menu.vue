@@ -6,10 +6,10 @@
     <MenuItem :name="'dashboard'">
       <mdi-home />
     </MenuItem>
-    <MenuItem :name="'demo'">
+    <MenuItem :name="'people.index'">
       <mdi-view-list />
     </MenuItem>
-    <MenuItem :name="'demo2'">
+    <MenuItem :name="'demo'">
       <mdi-chart-timeline-variant />
     </MenuItem>
     <MenuItem

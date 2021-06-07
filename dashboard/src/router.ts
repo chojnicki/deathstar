@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { useLoading } from '@/loading'
 import Dashboard from '@/pages/dashboard.vue'
 import Demo from '@/pages/demo.vue'
-import Demo2 from '@/pages/demo2.vue'
+import PeopleIndex from '@/pages/people/index.vue'
+import PeopleEdit from '@/pages/people/edit.vue'
 import Demo3 from '@/pages/demo3.vue'
 import Login from '@/pages/login.vue'
 import Error404 from '@/pages/404.vue'
@@ -26,9 +27,17 @@ const routes = [
     },
   },
   {
-    path: '/demo2',
-    component: Demo2,
-    name: 'demo2',
+    path: '/people',
+    component: PeopleIndex,
+    name: 'people.index',
+    meta: {
+      middleware: ['auth'],
+    },
+  },
+  {
+    path: '/people/:id',
+    component: PeopleEdit,
+    name: 'people.edit',
     meta: {
       middleware: ['auth'],
     },
