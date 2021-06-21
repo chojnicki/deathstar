@@ -26,6 +26,8 @@ WORKDIR /usr/src/app
 #
 FROM dev AS build
 
+USER root
+
 COPY package.json yarn.lock ./
 RUN yarn --frozen-lockfile --verbose
 
