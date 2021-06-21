@@ -5,6 +5,7 @@ FROM node:16-alpine AS dev
 
 ARG UID=1000
 ARG GID=1000
+ARG VITE_API_URL
 
 RUN apk add --update --no-cache \ 
     libc6-compat \
