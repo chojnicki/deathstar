@@ -1,6 +1,5 @@
 # DeathStar - Example Laravel + Vue project
 
-**Edit: Server on GKE with live preview was blocked because of "detected" cryptomining. Really Google, mining with Vue and Laravel? Wow.. Good for me that it is just silly demo and not production app! Sorry, I will put this elsewhere later... For now please just copy repo and run via docker-compose locally :)**
 ## Live preview: https://deathstar.chojnicki.xyz
 
 Template was strongly inspired from previews available at https://www.behance.net/gallery/88652977/Star-Wars-Death-Star-Dashboard-Design. 
