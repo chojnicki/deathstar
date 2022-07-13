@@ -1,7 +1,5 @@
 # DeathStar - Example Laravel + Vue project
 
-## Live preview: https://deathstar.chojnicki.xyz
-
 Template was strongly inspired from previews available at https://www.behance.net/gallery/88652977/Star-Wars-Death-Star-Dashboard-Design. 
 So all credits to graphic designer, which I'm not :grinning: It was cuted in short time from crappy .jpg so be aware that it is far from being perfect :wink:
 
